@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Show reservation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title> Reservation</ion-card-title>
+      <ion-card-title> Date Debut: {{ reservation?.dateDebut }} - Date Fin: {{ reservation?.dateFin }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h4>Prix: {{ reservation?.prix }}</h4>
+      <p>Obs: {{ reservation?.obs }}</p>
+    </ion-card-content>
+    <a [routerLink]="['/cities']"><ion-button>cities</ion-button></a>
+  </ion-card>
+</ion-content>
