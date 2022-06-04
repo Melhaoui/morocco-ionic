@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular'
+import { CitiesServiceService } from 'src/app/services/cities-service.service';
 
 @Component({
   selector: 'app-cities',
@@ -8,7 +9,7 @@ import {NavController} from '@ionic/angular'
 })
 export class CitiesPage implements OnInit {
 
-  items = [
+  /*items = [
     {
       citie: 'Oujda',
       img: 'oujda.jpg'
@@ -24,11 +25,26 @@ export class CitiesPage implements OnInit {
       img: 'rabat.jpg'
       
     },
-  ];
+  ];*/
+  
+  items: any =[]
 
-  constructor( private navCtrl : NavController ) { }
+  constructor( 
+    private navCtrl : NavController,
+    private citiesService: CitiesServiceService
+    ) { }
 
   ngOnInit() {
+    this.getAllCities();
+  }
+
+  getAllCities() {
+    this.citiesService.getAllCities().subscribe(
+      cities =>{
+        console.log(cities);
+        this.items = cities
+      } 
+    );
   }
 
   itemSelected(item: string) {
